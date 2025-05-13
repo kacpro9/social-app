@@ -5,3 +5,22 @@
 a {
   color: black;
 }
+
+.btn {
+  background-color: lightblue;
+  cursor: pointer;
+  padding: 10px;
+  broder: none;
+  border-radius: 15px;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #00538a;
+  cursor: pointer;
+  color: white;
+}
+
+.loadMore {
+  margin: 20px 0;
+}
