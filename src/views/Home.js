@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Post from "../components/Post";
 import AddPost from "../components/AddPost";
+import FollowRecommendations from "../components/FollowRecommendations";
 
 const Home = (props) => {
   const [posts, setPosts] = useState([]);
@@ -51,9 +52,24 @@ const Home = (props) => {
   return (
     <div className="home">
       {props.user && <AddPost getPrevPost={getPrevPost} />}
+      {props.user && (
+        <FollowRecommendations
+          user={props.user}
+          getLatestPosts={getLatestPosts}
+          posts={posts}
+        />
+      )}
       <div className="postsLists">
         {posts.map((post) => {
-          return <Post post={post} key={post.id} user={props.user} setPosts={setPosts}/>;
+          return (
+            <Post
+              post={post}
+              key={post.id}
+              user={props.user}
+              setPosts={setPosts}
+              getLatestPosts={getLatestPosts}
+            />
+          );
         })}
         <button className="btn loadMore" onClick={getNextPosts}>
           Load more

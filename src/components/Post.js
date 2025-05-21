@@ -40,6 +40,19 @@ const Post = (props) => {
       });
   };
 
+   const unfollow = (id) => {
+    axios
+      .post("https://akademia108.pl/api/social-app/follows/disfollow", {
+        leader_id: id,
+      })
+      .then(() => {
+        props.getLatestPosts();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="post">
       <div className="avatar">
@@ -65,6 +78,10 @@ const Post = (props) => {
             <button className="btn" onClick={() => setDeleteModalVisible(true)}>
               Delete
             </button>
+          )}
+
+          {props.user && props.user.username !== props.post.user.username && (
+            <button className="btn" onClick = {() => unfollow(props.post.user.id)}>Unfollow</button>
           )}
 
           {props.user && (
