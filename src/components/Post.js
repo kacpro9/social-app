@@ -105,8 +105,7 @@ const Post = (props) => {
           </button>
           <button
             className="btn no"
-            onClick={() => setDeleteModalVisible(false)}
-          >
+            onClick={() => setDeleteModalVisible(false)}>
             No
           </button>
         </div>
